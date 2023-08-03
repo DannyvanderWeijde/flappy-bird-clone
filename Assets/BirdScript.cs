@@ -8,7 +8,9 @@ public class BirdScript : MonoBehaviour
     public Rigidbody2D myRigidBody;
     // The flap strength of the bird.
     public float flapStrength = 20;
+    // The logic script.
     public LogicScript logic;
+    // The state of the game over.
     public bool gameOver = false;
 
     /// <summary>

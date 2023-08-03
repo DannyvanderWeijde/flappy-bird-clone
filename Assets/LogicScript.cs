@@ -12,6 +12,7 @@ public class LogicScript : MonoBehaviour
     public int playerScore;
     // The score text.
     public Text scoreText;
+    // The game over object.
     public GameObject gameOverScreen;
 
     /// <summary>
