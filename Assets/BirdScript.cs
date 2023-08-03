@@ -7,7 +7,7 @@ public class BirdScript : MonoBehaviour
     // The rigid body of the bird.
     public Rigidbody2D myRigidBody;
     // The flap strength of the bird.
-    public float flapStrength = 20;
+    public float flapStrength = 15;
     // The logic script.
     public LogicScript logic;
     // The state of the game over.
@@ -28,6 +28,13 @@ public class BirdScript : MonoBehaviour
     /// <returns>void</returns>
     void Update()
     {
+        // Check if the bird is out of the screen.
+        if (transform.position.y < -17 || transform.position.y > 17)
+        {
+            // If so set the game to game over.
+            logic.gameOver();
+        }
+
         // Check if the users has pressed the spacebar.
         if (Input.GetKeyDown(KeyCode.Space) && !gameOver)
         {
