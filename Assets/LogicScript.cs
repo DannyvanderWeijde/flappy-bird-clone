@@ -20,6 +20,7 @@ public class LogicScript : MonoBehaviour
     /// <summary>
     /// This is a function that adds a number to the score.
     /// </summary>
+    /// <param name="scoreToAdd" type="int" default="1">The amount by which the score needs to be increased.</param>
     /// <returns>void</returns>
     [ContextMenu("Increase Score")]
     public void addToScore(int scoreToAdd = 1)
