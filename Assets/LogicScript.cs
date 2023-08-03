@@ -14,6 +14,8 @@ public class LogicScript : MonoBehaviour
     public Text scoreText;
     // The game over object.
     public GameObject gameOverScreen;
+    // The bird script.
+    public BirdScript bird;
 
     /// <summary>
     /// This is a function that adds a number to the score.
@@ -22,10 +24,13 @@ public class LogicScript : MonoBehaviour
     [ContextMenu("Increase Score")]
     public void addToScore(int scoreToAdd = 1)
     {
-        // Add the given number to the playerscore.
-        playerScore += scoreToAdd;
-        // Update the text to show to the user what their score is.
-        scoreText.text = playerScore.ToString();
+        // Check if the game is not over.
+        if (!bird.gameOver) {
+            // Add the given number to the playerscore.
+            playerScore += scoreToAdd;
+            // Update the text to show to the user what their score is.
+            scoreText.text = playerScore.ToString();
+        }
     }
 
     /// <summary>
