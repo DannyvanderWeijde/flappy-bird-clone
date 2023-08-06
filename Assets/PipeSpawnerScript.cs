@@ -13,7 +13,7 @@ public class PipeSpawnerScript : MonoBehaviour
     // The height offset.
     public float heightOffset = 5;
     // The camera.
-    public Camera camera;
+    new public Camera camera;
     // The width offset of the spawner.
     public float widthOffset;
     

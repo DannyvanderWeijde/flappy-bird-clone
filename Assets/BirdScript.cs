@@ -14,19 +14,31 @@ public class BirdScript : MonoBehaviour
     public bool gameOver = false;
 
     /// <summary>
-    /// This is a function that runs code on class  when its rendered for the first time.
+    /// This is a function that runs code on every frame after being rendered.
     /// </summary>
-    /// <returns>void</returns>
-    void Start()
+    void Update()
     {
-        
+        // Check the game over state.
+        checkGameOverState();
+        // Check the space bar press.
+        checkSpaceBarPress();
     }
 
     /// <summary>
-    /// This is a function that runs code on every frame after being rendered.
+    /// This is a function that runs when the bird hits something.
     /// </summary>
-    /// <returns>void</returns>
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Show the game over screen.
+        logic.gameOver();
+        // Set the game to game over.
+        gameOver = true;
+    }
+
+    /// <summary>
+    /// This is a function that checks the game over state of the game.
+    /// </summary>
+    private void checkGameOverState()
     {
         // Check if the bird is out of the screen.
         if (transform.position.y < -17 || transform.position.y > 17)
@@ -34,8 +46,14 @@ public class BirdScript : MonoBehaviour
             // If so set the game to game over.
             logic.gameOver();
         }
+    }
 
-        // Check if the users has pressed the spacebar.
+    /// <summary>
+    /// This is a function that checks if the space bar has been pressed.
+    /// </summary>
+    private void checkSpaceBarPress()
+    {
+        // Check if the users has pressed the space bar.
         if (Input.GetKeyDown(KeyCode.Space) && !gameOver)
         {
             /*
@@ -44,17 +62,5 @@ public class BirdScript : MonoBehaviour
              */
             myRigidBody.velocity = Vector2.up * flapStrength;
         }
-    }
-
-    /// <summary>
-    /// This is a function that runs when the bird hits something.
-    /// </summary>
-    /// <returns>void</returns>
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Show the game over screen.
-        logic.gameOver();
-        // Set the game to game over.
-        gameOver = true;
     }
 }
